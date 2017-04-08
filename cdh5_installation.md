@@ -106,4 +106,6 @@ sudo ./cloudera-manager-installer.bin
 
 #### Cloudera Wizard will take you through the following steps if above all of the prerequisites are set properly
 
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/Login.png)
+Format: ![Alt Text](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/Login.png)
 
