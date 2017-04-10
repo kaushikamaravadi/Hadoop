@@ -80,9 +80,12 @@ yum install -y httpd
 service httpd start && chkconfig httpd on
 ```
 
+### Got to netwroking/Firewall rules and create firewall rule. Make sure you add the below rule in networking/firewall_rules
 
-
-
+name: my_rule
+source_tag: 0.0.0.0/0
+allowed protocols/ports: tcp:0-65000
+network: default
 
 
 ### CDH INSTALLATION
