@@ -44,11 +44,6 @@ To specify the Scala version, use -Dscala=xxx(2.10 or 2.11). By default, it buil
 mvn -Dscala=2.10 clean package
 ```
 
-Tips:
-Because some maven plugins cannot support scala version perfectly, there are some exceptions. 
-
-1. No matter what scala version is specified, the module (gearpumpbench/streaming) is always built in scala 2.11. 
-2. When the spark verison is specified to 2.0, the module (sparkbench/streaming) is only supported for scala 2.11.
 
 ### Specify Spark Version
 
@@ -129,6 +124,23 @@ To run a `sleep`
 ```sh
 ./bin/workloads/micro/sleep/hadoop/run.sh
 ```
+To run a `dfsioe`
+
+```sh
+./bin/workloads/micro/dfsioe/prepare/prepare.sh
+```
+```sh
+./bin/workloads/micro/dfsioe/hadoop/run.sh
+```
+
+### Websearch Benchmarks
+
+```sh
+./HiBench/bin/workloads/websearch/nutchindexing/prepare/prepare.sh
+```
+```sh
+./HiBench/bin/workloads/websearch/nutchindexing/hadoop/run.sh 
+```
 
 ### SQL
 
@@ -158,11 +170,7 @@ To run a `sql`
 
 The `<HiBench_Root>/report/hibench.report` is a summarized workload report, including workload name, execution duration, data size, throughput per cluster, throughput per node.
 
-The report directory also includes further information for debuging and tuning.
-     
-  * `<workload>/hadoop/bench.log`: Raw logs on client side.
-  * `<workload>/hadoop/monitor.html`: System utilization monitor results.
-  * `<workload>/hadoop/conf/<workload>.conf`: Generated environment variable configurations for this workload.
-
-### 
+```sh
+/HiBench/report
+```
 
