@@ -40,7 +40,7 @@ sqoop list-databases --connect "jdbc:mysql://35.184.147.216/" --username=root --
 
 ### FIELDS TERMINATED BY '|' , only one mapper , target-dir 
 
-sqoop import --connect "jdbc:mysql://35.184.147.216/mysql" --username=root --password=iamgroot --fields-terminated-by '\' -m 1 --target-dir '/user/directory'
+sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --table takes --fields-terminated-by '\' -m 1 --target-dir '/user/directory'
 
 ### Columns
 
@@ -94,6 +94,9 @@ sqoop job --show first
 
 sqoop job --list
 
+### COMPRESS
+
+sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --table takes --fields-terminated-by '\' --compress --compression-codec org.apache.hadoop.io.compress.SnappyCodec -m 1 --target-dir '/user/directory/compress'
 
 
 
