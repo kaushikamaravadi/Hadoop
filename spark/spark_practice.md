@@ -9,8 +9,10 @@ data.count()
 # 'parallelize' creates an RDD by distributing data over the cluster
 
 ```
+
 rdd = sc.parallelize(range(14), numSlices=4)
 print("Number of partitions: {}".format(rdd.getNumPartitions()))
+
 ```
 
 # 'glom' lists all elements within each partition
@@ -189,7 +191,7 @@ The group of transformation functions (groupByKey, reduceByKey, aggregateByKey, 
 
 
 
-# Vote
+# Vote Dataset
 
 >>> vote = sc.textFile('/user/kaushik/Vote.txt').map(lambda x: x.split('\t'))
 >>> vote.count()
@@ -213,51 +215,21 @@ sc.textFile("test.txt")\
 [(u'0.60', 2), (u'0.00', 1), (u'0.80', 1), (u'0.40', 1)]
 # KIRITI ANNA YESWANTH ANNA
 
+# saveAsSequenceFile
 
-# Transformations on textFile
+data = sc.textFile('/user/kaushik/Vote.txt').flatMap(lambda x: x.split('\t'))
+data.take(5)
+[u'1', u'1', u'0.60', u'1.00', u'4/15/96 13:16:00']
+data.map(lambda x: (None,x)).saveAsSequenceFile('/user/kaushik/pysparkseq')
 
-### Convert all words in a rdd to lowercase and split the lines of a document using space.
+### reading a sequence file
+dataseq = sc.sequenceFile('/user/kaushik/pysparkseq/part-00001')
+dataseq.take(5)
+[(None, u'37812'), (None, u'379'), (None, u'0.80'), (None, u'1.00'), (None, u'9/26/96 21:58:10')]
 
->>> def func(lines): 
-...     lines = lines.lower()
-...     lines = lines.split()
-...     return lines
-... 
->>> use1 = use.map(func)
-
->>> use2 = use.flatMap(func)
->>> use2.take(2)
-[u'all', u'of']
-
-###  Next, I want to remove the words, which are not necessary to analyze this text. We call these words as “stop words”; Stop words do not add much value in a text. For example, “is”, “am”, “are” and “the” are few examples of stop words.
-
->>> stopwords = ['is','am','are','the','for','a','of']
->>> use3 = use2.filter(lambda x: x not in stopwords)
->>> use3.take(5)
-[u'all', u'above', u'explains', u'why', u'it\u2019s']
-
-## Transformation: groupBy
-
-### After getting the results into rdd3, we want to group the words in rdd3 based on which letters they start with. For example, suppose I want to group each word of rdd3 based on first 3 characters.
-
->>> use4 = use3.groupBy(lambda w: w[0:3])
->>> print [(k, list(v)) for (k,v) in use4.take(1)]
-[(u'all', [u'all'])]
->>> use3_mapped =use3.map(lambda x: (x,1))
->>> use3_grouped = use3_mapped.groupByKey()
->>> print(list((j[0], list(j[1])) for j in use3_grouped.take(5)))
-[(u'all', [1]), (u'rdds.', [1]), (u'have', [1]), (u'type-safety', [1]), (u'when', [1, 1])]
->>> use3.filter(lambda x: x == 'all').collect()
-[u'all']
->>> use3.filter(lambda x: x == 'when').collect()
-[u'when', u'when']
->>> use3.filter(lambda x: x == 'rdds.').collect()
-[u'rdds.']
->>> use3_freq_of_words = use3_grouped.mapValues(sum).map(lambda x: (x[1],x[0])).sortByKey(False)
->>> use3_freq_of_words.take(10)
-[(4, u'you'), (4, u'to'), (4, u'that'), (3, u'use'), (3, u'in'), (2, u'when'), (2, u'want'), (2, u'api,'), (2, u'might')
-, (2, u'python')]
->>> 
-
-
+data = sc.textFile('/user/kaushik/Vote.txt').flatMap(lambda x: x.split('\t'))
+data.map(lambda x: ('ka',x)).saveAsSequenceFile('/user/kaushik/pysparkseq1')
+dataseq = sc.sequenceFile('/user/kaushik/pysparkseq1/part-00001')
+dataseq.take(5)
+[(u'ka', u'37812'), (u'ka', u'379'), (u'ka', u'0.80'), (u'ka', u'1.00'), (u'ka', u'9/26/96 21:58:10')]
 
