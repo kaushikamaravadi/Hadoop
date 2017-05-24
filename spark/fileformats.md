@@ -15,7 +15,6 @@ readvote = sqlContext.read.format('com.databricks.spark.avro').load('/user/kaush
 >>> df.first()
 Row(department_id=2, department_name=u'Fitness')
 
- = 
 ### Write Json to HDFS
 
 >>> df
@@ -34,20 +33,25 @@ df.write.parquet('/user/kaushik/cca/test.parquet')
 
 df = sqlContext.read.parquet('/user/kaushik/cca/test.parquet')
 
+### avro to csv 
+
+>>> iris = sqlContext.read.format('com.databricks.spark.csv').load('/user/kaushik/iris.csv')
+>>> iris.count()
+150
+>>> iris.write.format('csv').save('/user/kaushik/pyspark/csh')
+>>> readvote = sqlContext.read.format('com.databricks.spark.avro').load('/user/kaushik/pyspark/avrofile/first.avro')
+>>> readvote.write.format('csv').save('/user/kaushik/pyspark/chennai')
+>>> iris.write.format('com.databricks.spark.avro').save('/user/kaushik/pyspark/cshavro')
+
+
+### pure tsv
 
 
 CREATE TEMPORARY TABLE episodes
 USING com.databricks.spark.avro
 OPTIONS (path "src/test/resources/episodes.avro")
 
-
+### temptable
 sqlContext.registerDataFrameAsTable(df, "table1")
 
-sqlContext = SQLContext(sc)
-schema = StructType([StructField("user_id", FloatType()),
-    StructField("movie_id", FloatType()),
-    StructField("rating", FloatType()),
-    StructField("junk", FloatType()),
-    StructField("timestamp", StringType())
-])
 
