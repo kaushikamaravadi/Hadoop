@@ -190,8 +190,7 @@ group = sqlContext.sql('select risk_category,count(*) as count from violation gr
  desc')
 
 group.write.format("com.databricks.spark.csv").option('header','true').save("/user/kaushik/group1")
-group.write.format("com.databricks.spark.avro").option('codec','snappy').option('header','true').save("/user/kaushi
-k/avro")
+
 
 ### task 5 
 
@@ -227,5 +226,24 @@ stored as textfile
 location '/user/kaushik/hive_database';
 
 df.write.format('com.databricks.spark.csv').option('header','true').option('codec','org.apache.hadoop.io.compress.GzipCodec').save('/user/kaushik/irisiris')
+
+save.write.format('orc').option('header','true').save('/user/kaushik/iriskaushiks')
+
+
+df = sqlContext.read.format('com.databricks.spark.csv').option('header','true').option('inferschema','true').load('/user/kaushik/iris.csv')
+
+rdd1 = sqlContext.read.format('com.databricks.spark.csv').option('delimiter','\t').option('inferschema','true').load('/user/kaushik/Vote.txt')
+
+rdd1.toDF('u','p','l','h','y')
+
+uj.select('u').distinct().count()
+
+### Take two tsv files, join them and save it to hdfs 
+
+item = sqlContext.read.format('com.databricks.spark.csv').option('header','true').option('inferschema','true').option('delimiter','\t').load('/user/kaushik/sparkjoin/Lokad_Items.tsv')
+
+order.printSchema()
+
+order.filter(order.Quantity<100).show()
 
 
