@@ -11,15 +11,15 @@ readvote = sqlContext.read.format('com.databricks.spark.avro').load('/user/kaush
 
 ### Read Json file 
 
->>> df = sqlContext.read.json('/user/kaushik/depts.json')
->>> df.first()
+df = sqlContext.read.json('/user/kaushik/depts.json')
+df.first()
 Row(department_id=2, department_name=u'Fitness')
 
 ### Write Json to HDFS
 
->>> df
+df
 DataFrame[department_id: bigint, department_name: string]
->>> df.write.json('/user/kaushik/pyspark/cca/test.json')
+df.write.json('/user/kaushik/pyspark/cca/test.json')
 
 
 
@@ -35,13 +35,13 @@ df = sqlContext.read.parquet('/user/kaushik/cca/test.parquet')
 
 ### avro to csv 
 
->>> iris = sqlContext.read.format('com.databricks.spark.csv').load('/user/kaushik/iris.csv')
->>> iris.count()
+iris = sqlContext.read.format('com.databricks.spark.csv').load('/user/kaushik/iris.csv')
+iris.count()
 150
->>> iris.write.format('csv').save('/user/kaushik/pyspark/csh')
->>> readvote = sqlContext.read.format('com.databricks.spark.avro').load('/user/kaushik/pyspark/avrofile/first.avro')
->>> readvote.write.format('csv').save('/user/kaushik/pyspark/chennai')
->>> iris.write.format('com.databricks.spark.avro').save('/user/kaushik/pyspark/cshavro')
+iris.write.format('csv').save('/user/kaushik/pyspark/csh')
+readvote = sqlContext.read.format('com.databricks.spark.avro').load('/user/kaushik/pyspark/avrofile/first.avro')
+readvote.write.format('csv').save('/user/kaushik/pyspark/chennai')
+iris.write.format('com.databricks.spark.avro').save('/user/kaushik/pyspark/cshavro')
 
 
 ### pure tsv

@@ -1,3 +1,7 @@
+## pyspark --packages com.databricks:spark-csv_2.11:1.5.0
+
+## from pyspark.sql.types import *
+
 ### Sqoop Import
 
 ### Sqoop Export
