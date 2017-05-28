@@ -19,7 +19,7 @@ Row(department_id=2, department_name=u'Fitness')
 
 df
 DataFrame[department_id: bigint, department_name: string]
-df.write.json('/user/kaushik/pyspark/cca/test.json')
+df.write.('/user/kaushik/pyspark/cca/test.json')
 
 
 
@@ -44,14 +44,14 @@ readvote.write.format('csv').save('/user/kaushik/pyspark/chennai')
 iris.write.format('com.databricks.spark.avro').save('/user/kaushik/pyspark/cshavro')
 
 
-### pure tsv
-
+### SQL COMMAND
 
 CREATE TEMPORARY TABLE episodes
 USING com.databricks.spark.avro
 OPTIONS (path "src/test/resources/episodes.avro")
 
 ### temptable
+
 sqlContext.registerDataFrameAsTable(df, "table1")
 
 

@@ -35,6 +35,6 @@ insert into pyspark.customer values(6,'ays','khy');
 
 
 select * from pyspark.customer;
-select * from pyspark.orders;
+select * from pyspark.orderss;
 
 drop table orderss;
