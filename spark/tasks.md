@@ -246,4 +246,28 @@ order.printSchema()
 
 order.filter(order.Quantity<100).show()
 
+### Convert string to date
+
+orders = sqlContext.read.format('com.databricks.spark.csv').option('inferschema','true').option('delimiter','\t').load('/user/lkaushik_amaravadi/Lokad_Items.tsv')
+
+schema = Structtype([StructField('Id',Integertype(),True),StructField('Date',DateType(),True),StructField('Quantity',IntegerType(),True)])
+
+
+
+from pyspark.sql.functions import *
+
+func = udf(lambda x: datetime.strptime(x, '%Y/%d/%m'),DateType())
+
+ df = o.withColumn('Date',func(col('Date')))
+
+### top n rows in each id 
+
+from pyspark.sql.window import Window
+
+window = Window.partitionBy(order['Id']).orderBy(order['Quantity'].desc())
+
+from pyspark.sql.functions import rank, col
+
+order.select('*', rank().over(window).alias('rank')).filter(col('rank') <= 2).show()
+
 

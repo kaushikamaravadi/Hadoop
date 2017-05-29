@@ -31,8 +31,7 @@ sqoop list-databases --connect "jdbc:mysql://localhost/cloudera_test" --username
 
 ### IMPORT TABLE test 
 
-sqoop import --connect jdbc:mysql://localhost/cloudera_test --username root --password namenode --table 
-test -m 1 --target-dir '/user/kaushik/directory'
+sqoop import --connect jdbc:mysql://localhost/cloudera_test --username root --password namenode --table test -m 1 --target-dir '/user/kaushik/directory'
 
 ### LIST ALL DATABASES in 35.184.147.216
 
@@ -69,20 +68,17 @@ password= iamgroot
 
 ### IMPORTING QUERY
 
-sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --query "SELECT * FROM takes where \$CONDITIONS" 
- --target-dir '/user/eval_import' -m 1
+sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --query "SELECT * FROM takes where \$CONDITIONS" --target-dir '/user/eval_import' -m 1
 
 ### WHERE
 
-sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --query "SELECT * FROM takes where course_id=239 
-and \$CONDITIONS"  --target-dir '/user/eval_import/my_import' -m 1
+sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --query "SELECT * FROM takes where course_id=239 and \$CONDITIONS"  --target-dir '/user/eval_import/my_import' -m 1
 
 ### as-avrodatafile
 
-sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --query "SELECT * FROM takes where course_id=239 
-and \$CONDITIONS"  --target-dir '/user/eval_import/my_import_avro' -m 1 --as-avrodatafile
+sqoop import --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot --query "SELECT * FROM takes where course_id=239 and \$CONDITIONS"  --target-dir '/user/eval_import/my_import_avro' -m 1 --as-avrodatafile
 
-###  reate hive table
+###  Create hive table
 
 sqoop import-table --connect "jdbc:mysql://35.184.147.216/univ" --username=root --password=iamgroot -m 1 --table ndh --hive-import --create-hive-table
 
