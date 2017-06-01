@@ -29,7 +29,22 @@
   * Cluster installation steps
 * [Sqoop](https://github.com/kaushikamaravadi/Hadoop/tree/master/sqoop)
   * Sqoop Tasks
+* [Spark](https://github.com/kaushikamaravadi/Hadoop/tree/master/spark)
+  * cca175
+  * DataFrame operations
+  * File Formats
+  * Final_Tasks
+  * Hive_Tables
+  * Sample Problems
+  * Spark Document
+  * Spark Practice RDD
+  * Spark SQL Practice
+  * Spark Submit
+  * Spark Wordcount
+  * Tasks on RDD and DataFrames
+  * Task on Titanic Dataset 
 * Fix Under Replicated Blocks
-
+* Change Ownership
+* CCA version 2
 
 

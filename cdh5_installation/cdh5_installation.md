@@ -116,63 +116,63 @@ sudo ./cloudera-manager-installer.bin
 
 #### Login
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/Login.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/Login.png)
 
 #### Welcome to Cloudera manager and CDH
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/cdh.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/cdh.png)
 
 #### Hosts
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/hosts.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/hosts.png)
 
 #### JDK Installation
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/jdk.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/jdk.png)
 
 #### Single User
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/single_user.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/single_user.png)
 
 #### SSH Login Credentials
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/ssh_login_credentials.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/ssh_login_credentials.png)
 
 #### Cluster Installation 
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/cluster_installation.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/cluster_installation.png)
 
 #### Cluster Installation
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/cluster_installation1.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/cluster_installation1.png)
 
 #### Cluster Installation Completed Successfully 
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/complete.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/complete.png)
 
 #### Installing Selected Parcels
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/parcels.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/parcels.png)
 
 #### Cluster Setup
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/setup.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/setup.png)
 
 #### Database Setup
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/setup2.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/setup2.png)
 
 #### First Run
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/first_run.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/first_run.png)
 
 #### Inspect Hosts for Connection
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/inspect1.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/inspect1.png)
 
 #### Congrats
 
-![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/blob/master/cdh5_pics/congrats.png)
+![GitHub Logo](https://github.com/kaushikamaravadi/Hadoop/tree/master/cdh5_installation/screenshots/congrats.png)
 
 
 
