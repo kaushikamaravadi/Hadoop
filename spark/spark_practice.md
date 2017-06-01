@@ -213,23 +213,38 @@ sc.textFile("test.txt")\
 >>> u = vote1.take(5)
 >>> sc.parallelize(u,2).countByValue().items()
 [(u'0.60', 2), (u'0.00', 1), (u'0.80', 1), (u'0.40', 1)]
-# KIRITI ANNA YESWANTH ANNA
 
-# saveAsSequenceFile
 
+### saveAsSequenceFile
+```
 data = sc.textFile('/user/kaushik/Vote.txt').flatMap(lambda x: x.split('\t'))
+```
 data.take(5)
+```
 [u'1', u'1', u'0.60', u'1.00', u'4/15/96 13:16:00']
+```
 data.map(lambda x: (None,x)).saveAsSequenceFile('/user/kaushik/pysparkseq')
-
+```
 ### reading a sequence file
+
+```
 dataseq = sc.sequenceFile('/user/kaushik/pysparkseq/part-00001')
+```
 dataseq.take(5)
+```
 [(None, u'37812'), (None, u'379'), (None, u'0.80'), (None, u'1.00'), (None, u'9/26/96 21:58:10')]
-
+```
+```
 data = sc.textFile('/user/kaushik/Vote.txt').flatMap(lambda x: x.split('\t'))
+```
+```
 data.map(lambda x: ('ka',x)).saveAsSequenceFile('/user/kaushik/pysparkseq1')
+```
+```
 dataseq = sc.sequenceFile('/user/kaushik/pysparkseq1/part-00001')
+```
+```
 dataseq.take(5)
+```
 [(u'ka', u'37812'), (u'ka', u'379'), (u'ka', u'0.80'), (u'ka', u'1.00'), (u'ka', u'9/26/96 21:58:10')]
-
+```

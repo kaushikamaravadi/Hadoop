@@ -29,15 +29,23 @@ Found 3 items
 from pyspark import SparkContext, SparkConf
 conf = SparkConf().setAppName('pyspark')
 sc = SparkContext(conf=conf)
-# Reading data from HDFS location
-# Flatten each line into multiple words using ” ” (space) as delimiter.
+### Reading data from HDFS location
+#### Flatten each line into multiple words using ” ” (space) as delimiter.
+```
 data = sc.textFile('/user/kaushik/pyspark/wordcount/wordcount.txt').flatMap(lambda x: x.split(' '))
-# Associate value 1 for each of the input word to map function.
+```
+#### Associate value 1 for each of the input word to map function.
+```
 datamap = data.map(lambda x: (x,1))
-# Aggregating using key (which are nothing but all unique words)
+```
+#### Aggregating using key (which are nothing but all unique words)
+```
 datareducebykey = datamap.reduceByKey(lambda x,y: x+y)
-# Saving to HDFS
+```
+#### Saving to HDFS
+```
 datareducebykey.saveAsTextFile('/user/kaushik/pyspark/wordcount/wordcountoutput')
+```
 
 ### Validation
 

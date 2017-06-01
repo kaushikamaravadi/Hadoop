@@ -13,6 +13,7 @@ datamap = data.map(lambda x: (x,1))
 datareducebykey = datamap.reduceByKey(lambda x,y: x+y)
 # Saving to HDFS
 datareducebykey.saveAsTextFile('/user/kaushik/pyspark/wordcount/wordcountoutput')
+```
 
 ### Validation
 

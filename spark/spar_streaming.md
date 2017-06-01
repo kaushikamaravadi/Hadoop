@@ -1,3 +1,0 @@
-yum install nmap-ncat
-
-

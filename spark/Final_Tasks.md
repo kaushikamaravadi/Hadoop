@@ -3,12 +3,14 @@
 ## from pyspark.sql.types import *
 
 ### Sqoop Import
-
+```sh
 sqoop import --connect jdbc:mysql://localhost/pyspark --username root --password Srianjaneyam@34 --table titanic -m 1 --fields-terminated-by '\t' --target-dir "/user/kaushik_amaravadi/titanic"
+```
 
 ### Sqoop Export
 
-
+```sh
+sqoop export --connect jdbc:mysql://localhost/pyspark --username root --password Srianjaneyam@34 table titanic -m 1 --fields-terminated-by '\t' --export-dir /user/kaushik_amaravadi/final
 
 ### Join two desperate datasets
 
@@ -38,7 +40,7 @@ thee = sqlContext.sql('select Quantity,concat(Id,LabelName) as Full from final')
 thee.show()
 ```
 
-### 7 Columns
+### ETL
 
 ```python
 item = sqlContext.read.format('com.databricks.spark.csv').option('header','true').option('inferschema','true').option('delimiter','\t').load('/user/kaushik/sparkjoin/Lokad_Items.tsv')
@@ -49,7 +51,7 @@ sevencolumns=item.select(item['Id'],item['LabelName'],item['TagLabelCategory'],i
 
 ```
 
-### Parquet gz Compression
+### Save as Parquet File
 
 ```python
 item = sqlContext.read.format('com.databricks.spark.csv').option('header','true').option('inferschema','true').option('delimiter','\t').load('/user/kaushik/sparkjoin/Lokad_Items.tsv')
@@ -57,7 +59,7 @@ item = sqlContext.read.format('com.databricks.spark.csv').option('header','true'
 ```python
 item.write.parquet('/user/kaushik/problem2')
 ```
-### individual state count
+### Aggregations on Data
 
 ```python
 item = sqlContext.read.format('com.databricks.spark.csv').option('header','true').option('inferschema','true').option('delimiter','\t').load('/user/kaushik/sparkjoin/Lokad_Items.tsv')
@@ -72,7 +74,7 @@ count = sqlContext.sql('select count(*) as count,LabelName from item group by La
 count.write.format('com.databricks.spark.avro').save('/user/kaushik/problem3')
 ```
 
-### query metastore Quantity > 100
+### Use metastore tables as an input source or an output sink for Spark applications
 
 sqlContext.sql('show databases').show()
 
@@ -84,7 +86,7 @@ amount.show()
 
 amount.write.format('com.databricks.spark.csv').save('/user/kaushik/quantity')
 
-### Avro snappy
+### Avro snappy (Snappy is the default compression for Avro)
 
 item = sqlContext.read.format('com.databricks.spark.csv').option('header','true').option('inferschema','true').option('delimiter','\t').load('/user/kaushik/sparkjoin/Lokad_Items.tsv')
 

@@ -1,47 +1,70 @@
 ### Problem 1 
 
-given a tsv file, extract first 7 columns and write back to hdfs 
+```python 
 
 df = sc.textFile('/user/kaushik/Vote.txt').map(lambda l: l.split('\t'))
-
+```
+```python
 sc.parallelize(df.takeSample(False,7)).saveAsTextFile('/user/kaushik/pyspark/takesevenseven.txt')
-
+```
+```python
 sc.parallelize(df.take(7)).saveAsTextFile('/user/kaushik/pyspark/takeseven1st.txt')
-
+```
+```python
 data = df.toDF()
-
+```
+```python
 data.select('_1').show()
-
+```
+```python
 dd = data.select('_1','_2','_3','_4','_5').take(7)
-
->>> df = sc.textFile('/user/kaushik/Vote.txt').map(lambda l: l.split('\t')).map(lambda l:(l[0],l[1]))
->>> df.first()
+```
+```python
+df = sc.textFile('/user/kaushik/Vote.txt').map(lambda l: l.split('\t')).map(lambda l:(l[0],l[1]))
+```
+```python
+df.first()
+```
 (u'1', u'1')
 
 
 ### Problem 2
-
->>> df = sc.textFile('/user/kaushik/Vote.txt').map(lambda l: l.split('\t'))
->>> data = df.toDF()
->>> data.write.parquet('/user/kaushik/cca/test1.parquet')
-
+```python
+df = sc.textFile('/user/kaushik/Vote.txt').map(lambda l: l.split('\t'))
+```
+```python
+data = df.toDF()
+```
+```python
+data.write.parquet('/user/kaushik/cca/test1.parquet')
+```
 
 ### Problem 3
 
-avro-tools getschema first.avro > ./first.avsc
+```python
 
->>> df = sc.textFile('/user/kaushik/iris.csv').map(lambda l: l.split(','))
->>> df.count()
+df = sc.textFile('/user/kaushik/iris.csv').map(lambda l: l.split(','))
+```
+```python
+df.count()
+```
+
 151
->>> from pyspark.sql.types import *
->>> schema = StructType([StructField("sep_len", DecimalType()),
+```python
+from pyspark.sql.types import *
+```
+```python
+schema = StructType([StructField("sep_len", DecimalType()),
 ...     StructField("sep_wid", DecimalType()),
 ...     StructField("pet_len", DecimalType()),
 ...     StructField("pet_wid", DecimalType()),
 ...     StructField("species", StringType())
 ... ])
->>> dd = sqlContext.createDataFrame(df, schema)
->>> dd
+```
+```python
+dd = sqlContext.createDataFrame(df, schema)
+```
+
 DataFrame[sep_len: float, sep_wid: float, pet_len: float, pet_wid: float, species: string]
 
 
@@ -50,26 +73,43 @@ DataFrame[sep_len: float, sep_wid: float, pet_len: float, pet_wid: float, specie
 
 parquet snappy
 BY DEFAULT GZIP COMPRESSED
-
->>> df = sc.textFile('/user/kaushik/Vote.txt').map(lambda l: l.split('\t'))
-
-> sqlContext.setConf("spark.sql.parquet.compression.codec.", "codec")
+```python
+df = sc.textFile('/user/kaushik/Vote.txt').map(lambda l: l.split('\t'))
+```
+```python
+sqlContext.setConf("spark.sql.parquet.compression.codec.", "codec")
+```
+```python
 sqlContext.setConf("spark.sql.avro.compression.codec","codec") 
+```
+```python
 sqlContext.setConf("spark.sql.avro.deflate.level", "5")
->>> dd = sqlContext.createDataFrame(df,['u','m','r','j','t'])
->>> dd.write.parquet('/user/kaushik/cca/')
-
+```
+```python
+dd = sqlContext.createDataFrame(df,['u','m','r','j','t'])
+```
+```python
+dd.write.parquet('/user/kaushik/cca/')
+```
+```python
 sqlContext.setConf("spark.sql.parquet.compression.codec.", "snappy")
->>> dd = sqlContext.createDataFrame(df,['u','m','r','j','t'])
->>> dd.write.parquet('/user/kaushik/cca/par')
-
+```
+```python
+dd = sqlContext.createDataFrame(df,['u','m','r','j','t'])
+```
+```python
+dd.write.parquet('/user/kaushik/cca/par')
+```
+```python
 dd.write.option("compression","lzo").save('/user/kaushik/cca/gzip000')
+```
 
-spark.sql.parquet.compression.codec	gzip	Sets the compression codec use when writing Parquet files. Acceptable values include: uncompressed, snappy, gzip, lzo
+### spark.sql.parquet.compression.codec	gzip	Sets the compression codec use when writing Parquet files. Acceptable values include: uncompressed, snappy, gzip, lzo
+
 ### Problem 4
 
-
+```python
 dd.write.option("compression","none").save('/user/kaushik/pyspark/gzip1000')
-
+```
 
 

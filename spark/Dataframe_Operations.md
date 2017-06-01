@@ -1,11 +1,8 @@
-order_items = sqlContext.read.format('com.databricks.spark.csv').option('inferschema','true').load('/user/kaushik_amaravadi/order_items.csv')
+### Dataset
 
-orders = sqlContext.read.format('com.databricks.spark.csv').option('inferschema','true').load('/user/kaushik_amaravadi/orders.csv')
-
-
-
-
+```python
 order = sqlContext.read.format('com.databricks.spark.csv').option('header','true').option('inferschema','true').option('delimiter','\t').load('/user/kaushik/Lokad_Orders.tsv')
+```
 
 ### on the filtered data set find out the higest value in the product_price column under each category
 
@@ -33,15 +30,4 @@ order.groupBy('Id').agg({'Quantity':'min'}).orderBy(order['Id'].asc()).show()
 select max(Quantity) as a, Id from order group by id order by a
 
 
-sqlContext.setConf('spark.sql.avro.compression.codec','uncompressed')
-order.write.format('com.databricks.spark.avro').save('/user/kaushik/avro')
 
-
-sqlContext.setConf('spark.sql.parquet.compression.codec','snappy')
-
-
-sqlContext.setConf('spar.sql.parquet.compression.codec','uncompressed')
-
-org.apache.hadoop.io.compress.SnappyCodec
-
-order.write.json('/
