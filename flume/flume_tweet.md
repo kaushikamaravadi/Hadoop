@@ -8,10 +8,10 @@ TwitterAgent.sources.Twitter.consumerKey=F8EQO6fBSNpIFLE3FL2kMXU2s
 TwitterAgent.sources.Twitter.consumerSecret=vwP6fojKEeQtnKhEHImwqJVpVZ55OpR3naR4LjOiy06Waf5WWv
 TwitterAgent.sources.Twitter.accessToken=839904654968356868-vGhnDlTffwBa5UUjHTql8p3r8HqjvJG
 TwitterAgent.sources.Twitter.accessTokenSecret=i6D9gasWncIyOCJNyo79njoPWiceAC20DZ40Axi3N54Ni
-TwitterAgent.sources.Twitter.keywords=python,numpy,pandas,zeppelin,git,hadoop,spark
+TwitterAgent.sources.Twitter.keywords=python,hadoop,spark
 # Describing/Configuring the sink 
 
-TwitterAgent.sources.Twitter.keywords= python,numpy,pandas,zeppelin,git,hadoop,spark
+TwitterAgent.sources.Twitter.keywords=python,hadoop,spark
 
 TwitterAgent.sinks.HDFS.channel=MemChannel
 TwitterAgent.sinks.HDFS.type=hdfs
