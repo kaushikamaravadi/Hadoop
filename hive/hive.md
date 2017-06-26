@@ -15,6 +15,8 @@ CREATE DATABASE kaushik_santosh14 LOCATION '/user/kaushik_santosh14/hive/kaushik
 
 DROP DATABASE IF EXISTS sk CASCADE;
 ```
+### Create table employee (database= kaushik_santosh14)
+
 ```sql
 
 CREATE TABLE if NOT EXISTS kaushik_santosh14.employee (eid int,name STRING, salary INT, destination STRING)
@@ -24,6 +26,8 @@ FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE;
 ```
+### load data from test.csv into employee table
+
 ```sql
 
 LOAD DATA INPATH '/user/kaushik/test.csv' OVERWRITE INTO TABLE kaushik_santosh14.employee;
@@ -113,6 +117,7 @@ tblproperties ('avro.schema.literal'='{
 {"name":"species", "type":"string"}
 ]}');
 ```
+
 
 ```sql
 create table iris.iris_table1(s_length INT,s_width INT,p_length INT,p_width INT,species STRING)
