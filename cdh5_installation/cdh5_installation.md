@@ -54,7 +54,7 @@ vi /etc/ssh/sshd_config
 ```
 service sshd restart
 ```
-* Create a file named authorized_keys in namenode as well as datanode
+*  Create a file named authorized_keys in namenode as well as datanode
 * Copy public key which is in id_rsa.pub to authorized_keys
 ```
 cat id_rsa.pub > authorized_keys
